@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        /* Footer Customization */
+footer {
+    background-color: white !important;
+    color: #f1f1f1;
+}
+
+footer a {
+    color: #f1f1f1;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #f9c74f;
+}
+
+footer p {
+    margin: 0;
+    font-size: 15px;
+}
+.hidden {
+            display: none !important;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navigation Styles */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 56px;
+            bottom: 0;
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            z-index: 1020;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-250px);
+        }
+
+        .main-content {
+            margin-left: 250px;
+            margin-top: 56px;
+            transition: margin 0.3s ease;
+            padding: 20px;
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+        }
+
+        /* Login Form Styles */
+        .login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Dashboard Card Styles */
+        .dashboard-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Password Toggle Style */
+        .password-toggle {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-250px);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Portal - Tailwind CSS</title>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+    <!-- Firebase Database SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons (for icons) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body class="bg-gray-50">
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-30">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8"><script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // // Your web app's Firebase configuration
+            // const firebaseConfig = {
+            //   apiKey: "AIzaSyCGg_Id2UwRUTnzUVsvzTtuyh-EzB7Qbmg",
+            //   authDomain: "testing-1780e.firebaseapp.com",
+            //   projectId: "testing-1780e",
+            //   storageBucket: "testing-1780e.firebasestorage.app",
+            //   messagingSenderId: "17707782492",
+            //   appId: "1:17707782492:web:8e9186df915e77c95bf199"
+            // };
+          
+            // Initialize Firebase
+        //     const app = initializeApp(firebaseConfig);
+        //   </script>
+         <!-- Login Form -->
+    <div id="loginForm" class="login-container fade-in">
+        <div class="text-center mb-4">
+            <h2 class="text-primary">Safety Hub</h2>
+            <h3>Login</h3>
+        </div>
+        <form id="loginFormContent" novalidate>
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+
+            <div class="mb-3 position-relative">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="loginPassword" required>
+                <span class="password-toggle">
+                    <i class="fas fa-eye-slash"></i>
+                </span>
+            </div>
+
+            <div id="loginError" class="alert alert-danger hidden mb-3">
+                Invalid email or password
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+
+    
+    <div id="dashboard" class="hidden">
+        <div class="flex items-center justify-between h-16">
+            <!--Left section 
+            <div class="flex items-center">
+                <button id="sidebarToggle" class="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <i data-feather="menu" class="h-6 w-6"></i>
+                </button>
+                <img src="image1/India Flag _ 15 August Independence day.jpeg" alt="Company Logo" class="h-8 w-8 ml-4">
+            </div>-->
+
+        <nav class="top-nav navbar navbar-light bg-white px-3">
+            <div class="container-fluid">
+                <button id="sidebarToggle" class="btn btn-link">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="d-flex">
+                    <button class="btn btn-link position-relative me-3">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            2
+                        </span>
+                    </button>
+                    <button id="logoutBtn" class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+   
+           <!-- <div class="flex items-center justify-between h-16">
+                Left section 
+                <div class="flex items-center">
+                    <button id="sidebarToggle" class="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i data-feather="menu" class="h-6 w-6"></i>
+                    </button>
+                    <img src="image1/India Flag _ 15 August Independence day.jpeg" alt="Company Logo" class="h-8 w-8 ml-4">
+                </div>-->
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <i data-feather="search" class="h-5 w-5 text-gray-400"></i>
+                        </div>
+                        <input type="text" 
+                               class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-50 
+                                      placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 
+                                      focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                               placeholder="Search safety resources, policies, or training...">
+                    </div>
+                </div>
+
+                <!-- Right section 
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-500 hover:text-gray-900">
+                        <i data-feather="bell" class="h-6 w-6"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                     <a href="/my module/become.html">  <i data-feather="user" class="h-6 w-6 text-gray-500"></i></a>
+                     <a href="/my module/become.html" ><span class="hidden sm:block text-sm font-medium text-gray-700">Log In</span>
+                    </a></div>
+                    <div class="flex items-center space-x-2">
+                        <a href="/my module/logut.html">  <i data-feather="user" class="h-6 w-6 text-gray-500"></i></a>
+                        <a href="/my module/logut.html" ><span class="hidden sm:block text-sm font-medium text-gray-700">Log out</span>
+                       </a></div>
+                </div>
+                
+            </div>-->
+        </div>
+    </nav>
+    
+
+    <!-- Sidebar -->
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="image\workbgjpeg.jpg" class="d-block w-100" style="height: 500px;" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2>workplace safety</h2>
+              <b>Join workplace safety to ensure a secure and healthy environment for everyone</b></p>
+              <a href="my module/become.html"> <button class="btn btn-primary">Become a member</button></a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/image/image2.png" class="d-block w-100" style="height: 500px;" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2>workplace safety</h2>
+              <b>Join workplace safety to ensure a secure and healthy environment for everyone</b></p>
+              <a href="my module/become.html"> <button class="btn btn-primary">Become a member</button></a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/image/image3.png" class="d-block w-100" style="height: 500px;" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h2>workplace safety</h2>
+              <p>
+                <b>Join workplace safety to ensure a secure and healthy environment for everyone</b></p>
+                <button class="btn btn-primary"> <a href="/my module/become.html"> Become a member</button></a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+    <aside id="sidebar" 
+           class="fixed inset-y-0 left-0 bg-white shadow-lg transform transition-transform duration-300 ease-in-out 
+                  w-64 pt-16 z-20">
+        <nav class="px-2 py-4 space-y-1">
+            <!-- Dashboard Button -->
+            <button class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-md bg-blue-50 text-blue-600">
+                <i data-feather="home" class="h-5 w-5 mr-3 text-center " ></i>
+                Dashboard
+
+            </button>
+
+            <!-- Quick Report Button -->
+            <!-- <button class="w-full mt-4 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-md flex items-center justify-center">
+                <i data-feather="alert-triangle" class="h-5 w-5 mr-2"></i>
+                <button><a href="tailwind-js-incident-module.html">Report Incident</a></button> -->
+
+                <!--Report Incident-->
+            <!-- </button> -->
+             <!-- <button style="background: red; border-radius: 3px;margin:0; width: 100%; ">
+                <i data-feather="alert-triangle" class="h-5 w-5 mr-2"></i><a href="tailwind-js-incident-module.html">Report Incident</a></button> -->
+                
+                <!-- Quick Report Button -->
+    <button class="w-full mt-4 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-md flex items-center justify-center">
+        <i data-feather="alert-triangle" class="h-5 w-5 mr-2"></i>
+        <a href="tailwind-js-incident-module.html">Report Incident</a>
+        <!--Report Incident-->
+    </button>
+            <!-- Navigation Menu -->
+            <div class="mt-8">
+                <div class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    Safety Management
+                </div>
+                <div class="mt-2 space-y-1">
+                    <button class="w-full flex items-center px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md">
+                        <a href="safety-policies-bootstrap.html"> Safety Policies</a>
+                        <i data-feather="chevron-right" class="h-4 w-4 ml-auto"></i>
+                        
+                    </button>
+                    <button class="w-full flex items-center px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md">
+                    <a href="safety-training-internal.html">Training</a>
+                    <i data-feather="chevron-right" class="h-4 w-4 ml-auto"></i>
+                    
+                    </button>
+                    <button class="w-full flex items-center px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md">
+                       <a href="safety-reports-module.html" >Reports</a>
+                        <i data-feather="chevron-right" class="h-4 w-4 ml-auto"></i>
+                    </button>
+                    <button class="w-full flex items-center px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md">
+                         <a href="safety-resources-module.html">Resources</a>
+                        <i data-feather="chevron-right" class="h-4 w-4 ml-auto"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="transition-margin duration-300 ease-in-out ml-64 pt-16">
+        <div class="px-4 sm:px-6 lg:px-8 py-6">
+            <!-- Dashboard Header -->
+            <div class="mb-8">
+                <h1 class="text-2xl font-bold text-gray-900">Safety Dashboard</h1>
+                <p class="mt-1 text-sm text-gray-500">
+                    Overview of workplace safety status and recent activities
+                </p>
+            </div>
+
+            <!-- Quick Stats Grid -->
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Stats cards will be populated by JavaScript -->
+            </div>
+
+            <!-- Recent Activity & Upcoming Training -->
+            <div class="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
+                <!-- Recent Incidents -->
+                <div class="bg-white shadow rounded-lg">
+                    <div class="p-6">
+                        <a href="safety-reports-module.html"><h3 class="text-lg font-medium text-gray-900">Recent Incidents</h3>
+                      </a>  <div id="recentIncidents" class="mt-6 divide-y divide-gray-200">
+                            <!-- Incidents will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Training -->
+                <div class="bg-white shadow rounded-lg">
+                    <div class="p-6">
+                        <h3 class="text-lg font-medium text-gray-900">Upcoming Training</h3>
+                        <div id="upcomingTraining" class="mt-6 divide-y divide-gray-200">
+                            <!-- Training will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            </div>
+        </div>
+
+            <!-- Quick Access Cards -->
+            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                
+                <!-- Cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+    <script>
+        // Initialize Feather Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+        });
+
+        // Sample data
+        const quickStats = [
+            { title: 'Days Without Incident', value: '45', icon: 'check-circle', color: 'text-green-600' },
+            { title: 'Open Reports', value: '3', icon: 'alert-circle', color: 'text-yellow-600' },
+            { title: 'Pending Reviews', value: '7', icon: 'clock', color: 'text-blue-600' },
+            { title: 'Upcoming Trainings', value: '2', icon: 'calendar', color: 'text-purple-600' }
+        ];
+
+        const recentIncidents = [
+            { id: 1, type: 'Near Miss', location: 'Workshop A', status: 'Under Review', date: '2024-11-10' },
+            { id: 2, type: 'Minor Injury', location: 'Loading Bay', status: 'Resolved', date: '2024-11-09' }
+        ];
+
+        const upcomingTrainings = [
+            { id: 1, title: 'Fire Safety Refresher', date: '2024-11-15', mandatory: true },
+            { id: 2, title: 'First Aid Basics', date: '2024-11-20', mandatory: false }
+        ];
+
+        const quickAccessCards = [
+            { title: 'Safety Policies', icon: 'file-text', color: 'bg-purple-500' },
+            { title: 'Training Resources', icon: 'book-open', color: 'bg-blue-500' },
+            { title: 'Emergency Procedures', icon: 'alert-triangle', color: 'bg-red-500' }
+        ];
+
+        // DOM Elements
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const loginForm = document.getElementById('loginForm');
+        const loginFormContent = document.getElementById('loginFormContent');
+        const loginError = document.getElementById('loginError');
+        const dashboard = document.getElementById('dashboard');
+        
+        const logoutBtn = document.getElementById('logoutBtn');
+        const passwordToggle = document.querySelector('.password-toggle');
+        const passwordInput = document.getElementById('loginPassword');
+
+        // Check login status on page load
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                showDashboard();
+            }
+        }
+
+        // Show/Hide Functions
+        function showDashboard() {
+            loginForm.classList.add('hidden');
+            dashboard.classList.remove('hidden');
+            localStorage.setItem('isLoggedIn', 'true');
+        }
+
+        function showLogin() {
+            dashboard.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+            localStorage.removeItem('isLoggedIn');
+        }
+
+        // Toggle Sidebar
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+        });
+
+        // Login Form Submit
+        loginFormContent.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = passwordInput.value;
+
+            if (email && password) {
+                showDashboard();
+                loginError.classList.add('hidden');
+            } else {
+                loginError.classList.remove('hidden');
+            }
+        });
+
+        // Logout Button
+        logoutBtn.addEventListener('click', showLogin);
+
+        // Password Toggle
+        passwordToggle.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+
+        // Sidebar Toggle
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+            mainContent.classList.toggle('ml-0');
+        });
+
+        // Render Functions
+        function renderQuickStats() {
+            const statsContainer = document.querySelector('.lg\\:grid-cols-4');
+            statsContainer.innerHTML = quickStats.map(stat => `
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i data-feather="${stat.icon}" class="h-6 w-6 ${stat.color}"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">${stat.title}</dt>
+                                    <dd class="text-lg font-semibold text-gray-900">${stat.value}</dd>
+                                     <a href="safety-reports-module.html">MORE</a>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            feather.replace();
+        }
+
+        function renderIncidents() {
+            const incidentsContainer = document.getElementById('recentIncidents');
+            incidentsContainer.innerHTML = recentIncidents.map(incident => `
+                <div class="py-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <i data-feather="alert-triangle" class="h-6 w-6 text-yellow-500"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900">${incident.type}</p>
+                            <p class="text-sm text-gray-500">${incident.location}</p>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                   ${incident.status === 'Resolved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
+                            ${incident.status}
+                        </span>
+
+                    </div>
+                </div>
+            `).join('');
+            feather.replace();
+        }
+
+        function renderTraining() {
+            const trainingContainer = document.getElementById('upcomingTraining');
+            trainingContainer.innerHTML = upcomingTrainings.map(training => `
+                <div class="py-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <i data-feather="book-open" class="h-6 w-6 text-blue-500"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900">${training.title}</p>
+                            <p class="text-sm text-gray-500">Date: ${training.date}</p>
+                        </div>
+                        ${training.mandatory ? `
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                Mandatory
+                            </span>
+                        
+                        ` : ''}
+                                                    <p><a class="btn btn-primary" href="my module/fireemergencyprotocal.html">View details »</a></p>
+
+                    </div>
+                </div>
+            `).join('');
+            feather.replace();
+        }
+
+        function renderQuickAccessCards() {
+            const cardsContainer = document.querySelector('.lg\\:grid-cols-3');
+           cardsContainer.innerHTML = quickAccessCards.map(card => `
+         
+                <div class="relative group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div class="inline-flex p-3 rounded-lg ${card.color}">
+                        <i data-feather="${card.icon}" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <h3 class="mt-4 text-lg font-medium text-gray-900 group-hover:text-blue-600">
+                        ${card.title}
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500">
+                        Access important safety information and resources
+                    </p>
+                                  <a href="index/traning.html"><p><a class="btn btn-primary" href="index/firstaid.html">View details »</a></p>
+
+                    <span class="absolute inset-0 rounded-lg ring-2 ring-transparent group-hover:ring-blue-500 transition-all duration-300"></span>
+                </div>
+
+            `).join('');
+            feather.replace();
+        
+         
+    }
+  
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuickStats();
+            renderIncidents();
+            renderTraining();
+            renderQuickAccessCards();
+        });
+    </script>
+
+
+    <!--<div class="container my-4">
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="/image/person.png" alt="" style="border-radius: 59px;">
+            
+            <h2 class="fw-normal">About</h2>
+            <p>Workplace safety means creating a safe and healthy environment to protect employees from accidents, injuries, and hazards while at work.</p>
+            <p><a class="btn btn-primary" href="#">View details »</a></p>
+          </div> /.col-lg-4 
+          <div class="col-lg-4">
+           <img src="/image/book.png" alt="">
+            <h2 class="fw-normal">topics</h2>
+            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+            <p><a class="btn btn-primary" href="#">View details »</a></p>
+          </div> /.col-lg-4 
+          <div class="col-lg-4">
+            <img src="/image/tain.png" alt="">
+            <h2 class="fw-normal">training</h2>
+            <p >teaching employees the basic skills, knowledge, and procedures needed to perform their tasks safely and effectively.</p>
+            <p><a class="btn btn-primary" href="#">View details »</a></p>
+          </div>.col-lg-4 -->
+        </div>
+       </div>   
+
+
+
+   </div>
+  
+   <footer class="bg-dark text-light py-5 mt-4">
+    <div class="container" id="emergency">
+        <div class="row">
+            <!-- Emergency Contacts -->
+            <div class="col-md-4 mb-4">
+                <h4>Emergency Contacts</h4>
+                <ul class="list-unstyled">
+                    <li><strong>Fire Department:</strong> 911</li>
+                    <li><strong>Medical Emergency:</strong> 911</li>
+                    <li><strong>Safety Officer:</strong> +1 123-456-7890</li>
+                    <li><strong>IT Support:</strong> +1 987-654-3210</li>
+                </ul>
+            </div>
+
+            <!-- Emergency Steps -->
+            <div class="col-md-4 mb-4">
+                <h4>Steps During Emergencies</h4>
+                <ol>
+                    <li>Stay calm and assess the situation.</li>
+                    <li>Evacuate the area if necessary.</li>
+                    <li>Alert your supervisor or safety officer.</li>
+                    <li>Call the appropriate emergency services.</li>
+                    <li>Follow the evacuation routes posted.</li>
+                </ol>
+            </div>
+
+            <!-- Evacuation Map or Quick Links -->
+            <div class="col-md-4 mb-4 text-align:left">
+                <h4>Evacuation Map</h4>
+               <a href="https://www.google.co.in/maps/@28.7518926,77.5061504,14z?entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D"><img src="/image/map.png" alt="Evacuation Map" class="img-fluid rounded"></a> 
+                
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="row mt-4">
+            <div class="col text-center">
+                <p class="mb-0">&copy; 2024 Workplace Safety | <a href="#" class="text-light">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+   </body>
+</html>

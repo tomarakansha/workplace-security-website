@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Analytics Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .card-stats {
+            transition: transform 0.3s;
+        }
+        .card-stats:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            height: 300px;
+        }
+        .progress {
+            height: 20px;
+        }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+        .injury-severity {
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <!-- Back Button -->
+        <div class="row mb-4">
+            <div class="col-xl-8 mx-auto">
+                <button onclick="window.location.href=''" class="btn btn-link text-decoration-none d-flex align-items-center text-secondary p-0">
+                    <i class="bi bi-arrow-left me-2"></i>
+                   <a href="safety-portal-tailwind.html"> Back </a>
+                </button>
+            </div>
+        </div>
+    
+    <div class="container-fluid py-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="h3">  Report data Analytics </h1>
+               
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card card-stats shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-1">Total Incidents YTD</h6>
+                                <h3 class="mb-0">487</h3>
+                                <small class="text-danger">
+                                    <i class="fas fa-arrow-up"></i> 8% from last year
+                                </small>
+                            </div>
+                            <div class="stat-icon bg-danger bg-opacity-10">
+                                <i class="fas fa-exclamation-triangle text-danger fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-1">Average Days Lost</h6>
+                                <h3 class="mb-0">14.2</h3>
+                                <small class="text-success">
+                                    <i class="fas fa-arrow-down"></i> 3.5 days improvement
+                                </small>
+                            </div>
+                            <div class="stat-icon bg-warning bg-opacity-10">
+                                <i class="fas fa-calendar text-warning fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-1">Safety Score</h6>
+                                <h3 class="mb-0">82/100</h3>
+                                <small class="text-success">Above Industry Average</small>
+                            </div>
+                            <div class="stat-icon bg-success bg-opacity-10">
+                                <i class="fas fa-chart-line text-success fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card card-stats shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted mb-1">Incident Rate</h6>
+                                <h3 class="mb-0">2.8</h3>
+                                <small class="text-muted">per 100 workers</small>
+                            </div>
+                            <div class="stat-icon bg-info bg-opacity-10">
+                                <i class="fas fa-percentage text-info fs-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Incident Trends by Type</h5>
+                            <div class="btn-group">
+                                <button class="btn btn-outline-secondary btn-sm active">Monthly</button>
+                                <button class="btn btn-outline-secondary btn-sm">Quarterly</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="incidentsChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Incident Distribution</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="distributionChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Analysis -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">High-Risk Areas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Location</th>
+                                        <th>Risk Score</th>
+                                        <th>Incident Count</th>
+                                        <th>Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Manufacturing Floor</td>
+                                        <td><span class="badge bg-danger">High (8.5)</span></td>
+                                        <td>45</td>
+                                        <td><span class="text-danger"><i class="fas fa-arrow-up"></i> 12%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Warehouse Zone B</td>
+                                        <td><span class="badge bg-warning">Medium (6.2)</span></td>
+                                        <td>32</td>
+                                        <td><span class="text-success"><i class="fas fa-arrow-down"></i> 5%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loading Dock</td>
+                                        <td><span class="badge bg-warning">Medium (5.8)</span></td>
+                                        <td>28</td>
+                                        <td><span class="text-warning"><i class="fas fa-minus"></i> 0%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Injury Type Analysis</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="injuryChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+        // Initialize Charts with actual data analysis
+        document.addEventListener('DOMContentLoaded', function() {
+            // Incident Trends Chart
+            const trendsCtx = document.getElementById('incidentsChart').getContext('2d');
+            new Chart(trendsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                    datasets: [{
+                        label: 'Slips/Falls',
+                        data: [25, 18, 22, 20, 24, 15, 19, 21, 17],
+                        borderColor: '#dc3545',
+                        tension: 0.4
+                    }, {
+                        label: 'Equipment Related',
+                        data: [15, 12, 18, 14, 16, 13, 15, 17, 14],
+                        borderColor: '#198754',
+                        tension: 0.4
+                    }, {
+                        label: 'Manual Handling',
+                        data: [20, 23, 19, 21, 18, 22, 20, 19, 21],
+                        borderColor: '#0d6efd',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+
+            // Incident Distribution Chart
+            const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+            new Chart(distributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Minor', 'Moderate', 'Serious', 'Severe'],
+                    datasets: [{
+                        data: [45, 30, 15, 10],
+                        backgroundColor: [
+                            '#28a745',
+                            '#ffc107',
+                            '#fd7e14',
+                            '#dc3545'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Injury Type Chart
+            const injuryCtx = document.getElementById('injuryChart').getContext('2d');
+            new Chart(injuryCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Strains', 'Cuts', 'Bruises', 'Burns', 'Fractures'],
+                    datasets: [{
+                        label: 'Incident Count',
+                        data: [78, 45, 56, 23, 34],
+                        backgroundColor: '#0d6efd'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+        
+
+    </script>
+</body>
+</html>

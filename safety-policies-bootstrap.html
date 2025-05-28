@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Back Button -->
+        <div class="row mb-4">
+            <div class="col-xl-8 mx-auto">
+                <button onclick="window.location.href=''" class="btn btn-link text-decoration-none d-flex align-items-center text-secondary p-0">
+                    <i class="bi bi-arrow-left me-2"></i>
+                   <a href="safety-portal-tailwind.html"> Back to Dashboard</a>
+                </button>
+            </div>
+        </div>
+    
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-xl-8">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <!-- Header Section -->
+                    <div class="mb-4">
+                        <h2 class="card-title h4 mb-2">Safety Policies</h2>
+                        <p class="text-muted">Review our comprehensive safety measures and protocols</p>
+                    </div>
+
+                    <!-- Accordion -->
+                    <div class="accordion" id="safetyPoliciesAccordion">
+                        <!-- Workplace Safety Guidelines -->
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#policy1">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-shield-fill me-2 text-primary"></i>
+                                        <span class="fw-medium">Workplace Safety Guidelines</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="policy1" class="accordion-collapse collapse" data-bs-parent="#safetyPoliciesAccordion">
+                                <div class="accordion-body">
+                                    <p class="text-muted small">Essential protocols for maintaining a safe working environment including emergency procedures and safety equipment usage.</p>
+                                    <div class="mt-3">
+                                        <a href="my module/workzone.html"><button class="btn btn-outline-primary btn-sm me-2">View Details</button></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Measures -->
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#policy2">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-lock-fill me-2 text-primary"></i>
+                                        <span class="fw-medium">Security Measures</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="policy2" class="accordion-collapse collapse" data-bs-parent="#safetyPoliciesAccordion">
+                                <div class="accordion-body">
+                                    <p class="text-muted small">Comprehensive security protocols covering physical access, data protection, and surveillance systems.</p>
+                                    <div class="mt-3">
+                                        <a href="index/rescouces.html"><button class="btn btn-outline-primary btn-sm me-2">View Details</button></a>
+                                        <!--<button class="btn btn-outline-secondary btn-sm">Download PDF</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Response -->
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#policy3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-exclamation-triangle-fill me-2 text-primary"></i>
+                                        <span class="fw-medium">Emergency Response</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="policy3" class="accordion-collapse collapse" data-bs-parent="#safetyPoliciesAccordion">
+                                <div class="accordion-body">
+                                    <p class="text-muted small">Detailed procedures for handling emergencies, evacuation plans, and crisis management protocols.</p>
+                                    <div class="mt-3">
+                                        <a href="my module/emergency.html"><button class="btn btn-outline-primary btn-sm me-2">View Details</button></a>
+                                        <!--<button class="btn btn-outline-secondary btn-sm">Download PDF</button>
+                                    --></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Health & Wellness -->
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#policy4">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-heart-fill me-2 text-primary"></i>
+                                        <span class="fw-medium">Health & Wellness</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="policy4" class="accordion-collapse collapse" data-bs-parent="#safetyPoliciesAccordion">
+                                <div class="accordion-body">
+                                    <p class="text-muted small">Guidelines for maintaining employee health, including sanitization protocols and wellness program details.</p>
+                                    <div class="mt-3">
+                                        <a href="/index/health.html"><button class="btn btn-outline-primary btn-sm me-2">View Details</button></a>
+                                       <!-- <button class="btn btn-outline-secondary btn-sm">Download PDF</button>
+                                    --></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personnel Safety -->
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#policy5">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-shield-check me-2 text-primary"></i>
+                                        <span class="fw-medium">Personnel Safety</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="policy5" class="accordion-collapse collapse" data-bs-parent="#safetyPoliciesAccordion">
+                                <div class="accordion-body">
+                                    <p class="text-muted small">Individual safety requirements, protective equipment guidelines, and personal security measures.</p>
+                                    <div class="mt-3">
+                                        <a href="my module\personal.html"><button class="btn btn-outline-primary btn-sm me-2">View Details</button></a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visitor Protocols -->
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#policy6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-people-fill me-2 text-primary"></i>
+                                        <span class="fw-medium">Visitor Protocols</span>
+                                    </div>
+                                </button>
+                            </h2>
+                            <div id="policy6" class="accordion-collapse collapse" data-bs-parent="#safetyPoliciesAccordion">
+                                <div class="accordion-body">
+                                    <p class="text-muted small">Safety requirements and procedures for visitors, contractors, and temporary personnel on premises.</p>
+                                    <div class="mt-3">
+                                        <a href="/index/visitor.html"><button class="btn btn-outline-primary btn-sm me-2">View Details</button></a>
+                                        <!--<button class="btn btn-outline-secondary btn-sm">Download PDF</button>
+                                    --></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

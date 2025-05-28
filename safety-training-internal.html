@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Back Button -->
+        <div class="row mb-4">
+            <div class="col-xl-8 mx-auto">
+                <button onclick="window.location.href=''" class="btn btn-link text-decoration-none d-flex align-items-center text-secondary p-0">
+                    <i class="bi bi-arrow-left me-2"></i>
+                   <a href="safety-portal-tailwind.html"> Back to Dashboard</a>
+                </button>
+            </div>
+        </div>
+    
+    <div class="container py-4">
+        <!-- Module Navigation Tabs -->
+        <ul class="nav nav-tabs" id="moduleTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#emergency" type="button">Emergency</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#workplace" type="button">Workplace</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#health" type="button">Health</button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content p-3 border border-top-0 rounded-bottom" id="moduleTabContent">
+            <!-- Emergency Procedures Module -->
+            <div class="tab-pane fade show active" id="emergency">
+                <div class="accordion" id="emergencyAccordion">
+                    <!-- Fire Safety -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#fireSafety">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-danger me-2">1</span>
+                                    Fire Safety Protocols
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="fireSafety" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <div class="mb-4">
+                                    <h5>Key Components:</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <h6 class="mb-2">Fire Prevention:</h6>
+                                            <img src="/image/firetips.png" alt="Fire Extinguisher and Safety Equipment" style="height: 500px; width: 900px;">
+                                            <ul>
+                                                <li>Keep all fire exits clear and accessible at all times.</li>
+                                                <li>Ensure fire extinguishers are visible and regularly maintained.</li>
+                                                <li>Store flammable materials safely, away from heat sources.</li>
+                                                <li>Never leave cooking or heating equipment unattended.</li>
+                                                <li>Regular equipment inspection</li>
+                                                <li>Electrical safety guidelines</li>
+                                                <li>Proper storage of flammable materials</li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h6 class="mb-2">What to Do in Case of Fire</h6>
+                                            <img src="/image/what.png" alt="Fire Evacuation Plan" style="width: 100%;  height: 400px;">
+                                            <ul>
+                                                <li>Activate the nearest fire alarm to alert others.</li>
+                                                <li><span class="important">Evacuate immediately</span> using the nearest safe exit.</li>
+                                                <li>If smoke is present, stay low to the ground to avoid inhalation.</li>
+                                                <li>Follow emergency exit signs to a safe assembly point.</li>
+                                                <li>Fire alarm activation procedures</li>
+                                                <li>Evacuation routes and assembly points</li>
+                                                <li>Fire extinguisher operation (PASS method)</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="text-end">
+                                    <a href="my module/takeass.html"><button class="btn btn-primary btn-sm">Take Assessment</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- First Aid -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#firstAid">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-danger me-2">2</span>
+                                    First Aid Procedures
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="firstAid" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-4">
+                                    <h5>What to Do in an Emergency</h5>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <p>First aid can save lives in emergency situations. Here are some basic steps you can follow:</p>
+                                            <ul>
+                                                <li><strong>Assess the Scene:</strong> Ensure the area is safe before approaching the injured person.</li>
+            <li><strong>Call for Help:</strong> Dial emergency services (e.g., 911) immediately if the situation is critical.</li>
+            <li><strong>Perform First Aid:</strong> Administer CPR, stop bleeding, or stabilize the injury as required.</li>
+            <li><strong>Stay Calm:</strong> Reassure the injured person and monitor their condition until help arrives.</li>
+        </ul>
+
+        <h2>Common First Aid Techniques</h2>
+        <ul>
+            <li><strong>CPR:</strong> Use chest compressions and rescue breaths to restore circulation and breathing.</li>
+            <li><strong>Stopping Bleeding:</strong> Apply pressure with a clean cloth to stop bleeding.</li>
+            <li><strong>Burns:</strong> Run cool (not cold) water over the burn for 10 minutes and cover with a sterile dressing.</li>
+            <li><strong>Choking:</strong> Perform the Heimlich maneuver or back blows to clear the airway.</li>
+                                                <li>CPR procedures</li>
+                                                <li>AED usage</li>
+                                                <li>Recovery position</li>
+                                            </ul>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6>Injured Person Form</h6>
+                                            <ul>
+                                                <p>If someone has been injured, please fill out the form below to report the incident:</p>
+                                                <div class="text-end">
+                                                    <a href="/my module/injury_form.html"><button class="btn btn-primary btn-sm">fill out injured people</button></a>
+                                                </div>
+
+        <footer>
+            Always prioritize safety and seek professional medical help for serious injuries.
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workplace Safety Module -->
+            <div class="tab-pane fade" id="workplace">
+                <div class="accordion" id="workplaceAccordion">
+                    <!-- PPE Training -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ppeTraining">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-primary me-2">1</span>
+                                    Personal Protective Equipment
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="ppeTraining" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Required PPE:</h6>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h6>Head Protection</h6>
+                                                        <ul>
+                                                            <li>Hard hats</li>
+                                                            <li>Safety glasses</li>
+                                                            <li>Face shields</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h6>Body Protection</h6>
+                                                        <ul>
+                                                            <li>Safety vest</li>
+                                                            <li>Work gloves</li>
+                                                            <li>Steel-toed boots</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h6>Respiratory</h6>
+                                                        <ul>
+                                                            <li>Dust masks</li>
+                                                            <li>Respirators</li>
+                                                            <li>Filters</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hazard Assessment -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#hazardAssessment">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-primary me-2">2</span>
+                                    Hazard Assessment & Control
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="hazardAssessment" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="mb-4">
+                                    <h5>Risk Assessment Matrix:</h5>
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Hazard Type</th>
+                                                <th>Risk Level</th>
+                                                <th>Control Measures</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Physical</td>
+                                                <td><span class="badge bg-danger">High</span></td>
+                                                <td>Machine guards, PPE, Safe distance</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chemical</td>
+                                                <td><span class="badge bg-warning text-dark">Medium</span></td>
+                                                <td>Ventilation, PPE, Proper storage</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ergonomic</td>
+                                                <td><span class="badge bg-info">Low</span></td>
+                                                <td>Proper posture, Equipment adjustment</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health & Hygiene Module -->
+            <div class="tab-pane fade" id="health">
+                <div class="accordion" id="healthAccordion">
+                    <!-- Sanitization -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sanitization">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-success me-2">1</span>
+                                    Sanitization Protocols
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="sanitization" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <div class="mb-4">
+                                    <h5>Daily Procedures:</h5>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            <h6>Personal Hygiene:</h6>
+                                            <ul>
+                                                <li>Hand washing techniques</li>
+                                                <li>PPE maintenance</li>
+                                                <li>Personal workspace cleaning</li>
+                                            </ul>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <h6>Workspace Sanitization:</h6>
+                                            <ul>
+                                                <li>Equipment disinfection</li>
+                                                <li>Common area cleaning</li>
+                                                <li>Waste management</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Monitoring -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#healthMonitoring">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-success me-2">2</span>
+                                    Health Monitoring & Reporting
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="healthMonitoring" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Health Check Procedures:</h5>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h6>Daily Monitoring:</h6>
+                                                        <ul>
+                                                            <li>Temperature checks</li>
+                                                            <li>Symptom screening</li>
+                                                            <li>Exposure reporting</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h6>Incident Reporting:</h6>
+                                                        <ul>
+                                                            <li>Exposure notification</li>
+                                                            <li>Contact tracing</li>
+                                                            <li>Documentation</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress & Navigation 
+        <div class="mt-4 d-flex justify-content-between align-items-center">
+            <div class="progress" style="width: 70%;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 45%">45% Complete</div>
+            </div>
+            <div>
+                <button class="btn btn-secondary me-2">Save Progress</button>
+                <!-- <button class="btn btn-primary">Next Module</button> 
+               
+                    <a href="/my module/hazardous.html"><button class="btn btn-primary btn-sm">Next Module</button></a>
+              
+                 
+            </div>
+        </div>
+    </div>-->
+    <!-- Header -->
+    <footer class="text-center mb-5">
+        
+        <div class="progress w-75 mx-auto">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45% Complete</div>
+        </div>
+     </footer>
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <button class="btn btn-secondary" id="saveProgress">Save Progress</button>
+        <button class="btn btn-primary" id="nextModule">Next Module</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const saveProgressBtn = document.getElementById('saveProgress');
+        const nextModuleBtn = document.getElementById('nextModule');
+        let progress = 45;
+
+        saveProgressBtn.addEventListener('click', function() {
+            progress = Math.min(progress + 10, 100);
+            updateProgress();
+        });
+
+        nextModuleBtn.addEventListener('click', function() {
+            const tabs = document.querySelectorAll('.nav-link');
+            const activeTab = document.querySelector('.nav-link.active');
+            const currentIndex = Array.from(tabs).indexOf(activeTab);
+            if (currentIndex < tabs.length - 1) {
+                tabs[currentIndex + 1].click();
+            }
+        });
+
+        function updateProgress() {
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = `${progress}%`;
+            progressBar.setAttribute('aria-valuenow', progress);
+            progressBar.textContent = `${progress}% Complete`;
+        }
+    });
+    
+
+     </script>
+
+
+</body>
+</html>

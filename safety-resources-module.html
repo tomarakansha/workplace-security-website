@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Resources Center</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <!-- Back Button -->
+        <div class="row mb-4">
+            <div class="col-xl-8 mx-auto">
+                <button onclick="window.location.href=''" class="btn btn-link text-decoration-none d-flex align-items-center text-secondary p-0">
+                    <i class="bi bi-arrow-left me-2"></i>
+                   <a href="safety-portal-tailwind.html"> Back to Dashboard</a>
+                </button>
+            </div>
+        </div>
+    
+    <div class="container-fluid py-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="card-title mb-0">
+                                <i class="fas fa-book-medical me-2"></i>Safety Resources Center
+                            </h4>
+                            <div class="input-group w-auto">
+                                <input type="search" class="form-control" placeholder="Search resources...">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Quick Access Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-outline-danger btn-lg">
+                                        <i class="fas fa-first-aid mb-2"></i><br>
+                                        
+                                        <a href="my module\emergency.html" style="text-decoration: none;">Emergency Procedures</a>
+                                        
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-outline-warning btn-lg">
+                                        <i class="fas fa-hard-hat mb-2"></i><br>
+                                        <a href="my module\pptguideline.html" style="text-decoration: none;">PPE Guidelines</a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-outline-success btn-lg">
+                                        <i class="fas fa-file-medical mb-2"></i><br>
+                                        <a href="my module\safety_form.html" style="text-decoration: none;">Safety form</a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-grid">
+                                    <button class="btn btn-outline-info btn-lg">
+                                        <i class="fas fa-phone-alt mb-2"></i><br>
+                                        <a href="" alt="cant reached" style="text-decoration: none;">Emergency contact</a>
+                                        
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="row">
+            <!-- Categories Sidebar -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Resource Categories</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#emergency" class="list-group-item list-group-item-action active" data-bs-toggle="list">
+                            <i class="fas fa-ambulance me-2"></i>Emergency Response
+                        </a>
+                        <a href="#equipment" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="fas fa-tools me-2"></i>Equipment Safety
+                        </a>
+                        
+                        <a href="my module\hazardous.html" class="list-group-item list-group-item-action"  style="text-decoration: none;"><!-- <a href="#hazmat" class="list-group-item list-group-item-action" data-bs-toggle="list">-->
+                             <i class="fas fa-biohazard me-2"></i>
+                          Hazardous Materials</a>
+                        </a>
+                       <!-- <a href="#compliance" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="fas fa-clipboard-check me-2"></i>Compliance Guides-->
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Content -->
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <!-- Emergency Response -->
+                    <div class="tab-pane fade show active" id="emergency">
+                        <div class="card">
+                            <div class="card-header bg-danger text-white">
+                                <h5 class="mb-0">Emergency Response Resources</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="card h-100">
+                                            <div class="card-header">
+                                                <h6 class="mb-0">Emergency Procedures</h6>
+                                            </div>
+                                            <div class="list-group list-group-flush">
+                                                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"><a href="/my module/fireemergencyprotocal.html" style="text-decoration: none; ; text-align: center;"> <p>Fire Emergency Protocol </p></a>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                                    <a href="my module\medical.html" style="text-decoration: none;text-align: center;"> <p>Medical Emergency Protocol </p></a>
+                                                </a>
+                                                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                                    
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100">
+                                            <div class="card-header">
+                                                <h6 class="mb-0">Emergency Contacts</h6>
+                                            </div>
+                                            <div class="list-group list-group-flush">
+                                                <div class="list-group-item">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <h6 class="mb-0">Security Office</h6>
+                                                            <small class="text-muted">24/7 Emergency Line</small>
+                                                        </div>
+                                                        <a href="tel:+1234567890" class="btn btn-outline-primary btn-sm">
+                                                            <i class="fas fa-phone-alt"></i> Call
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="list-group-item">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <h6 class="mb-0">First Aid Team</h6>
+                                                            <small class="text-muted">Medical Response</small>
+                                                        </div>
+                                                        <a href="tel:+1234567891" class="btn btn-outline-primary btn-sm">
+                                                            <i class="fas fa-phone-alt"></i> Call
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Equipment Safety -->
+                    <div class="tab-pane fade" id="equipment">
+                        <div class="card">
+                            <div class="card-header bg-warning">
+                                <h5 class="mb-0">Equipment Safety Resources</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="accordion" id="equipmentAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#operatingProcedures">
+                                                Operating Procedures
+                                            </button>
+                                        </h2>
+                                        <div id="operatingProcedures" class="accordion-collapse collapse show">
+                                            <div class="accordion-body">
+                                                <div class="list-group">
+                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h6>work-zone Guideline</h6>
+                                                            <small class="text-muted"><a href="my module\workzone.html" style="text-decoration: none;">click</a></small>
+                                                        </div>
+                                                        
+                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                        <div class="d-flex w-100 justify-content-between">
+                                                            <h6 class="mb-1">Power Tools Safety Manual</h6>
+                                                            <small class="text-muted">PDF</small>
+                                                        </div>
+                                                        <small class="text-muted">Last updated: Oct 2024</small>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
